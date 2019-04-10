@@ -96,4 +96,30 @@ describe("enhancer test suite", () => {
       expect(actual).toEqual(expected);
     });
   });
+  describe("get tests suite", () => {
+    it("should not modify the name at all if the enhancement level is zero", () => {
+      const item = { name: "broadsword", enhancement: 0, durability: 80 };
+      const expected = {
+        name: "broadsword",
+        enhancement: 0,
+        durability: 80
+      };
+      // act
+      const actual = enhancer.get(item);
+      // assert
+      expect(actual).toEqual(expected);
+    });
+    it("if enhancement is greater than zero should add [+n] to the name where n is the ehnhancement level  ", () => {
+      const item = { name: "broadsword", enhancement: 1, durability: 80 };
+      const expected = {
+        name: "[+1] broadsword",
+        enhancement: 1,
+        durability: 80
+      };
+      // act
+      const actual = enhancer.get(item);
+      // assert
+      expect(actual).toEqual(expected);
+    });
+  });
 });
