@@ -27,4 +27,32 @@ describe("enhancer test suite", () => {
       expect(actual).toEqual(expected);
     });
   });
+  describe("Succeed test suite", () => {
+    it("should increase the enhancement by one if less than 20", () => {
+      // arrange
+      const item = { name: "broadsword", enhancement: 0, durability: 80 };
+      const expected = {
+        name: "broadsword",
+        enhancement: 1,
+        durability: 80
+      };
+      // act
+      const actual = enhancer.succeed(item);
+      // assert
+      expect(actual).toEqual(expected);
+    });
+    it("should not change the enhancement level if it is 20", () => {
+      // arrange
+      const item = { name: "broadsword", enhancement: 20, durability: 80 };
+      const expected = {
+        name: "broadsword",
+        enhancement: 20,
+        durability: 80
+      };
+      // act
+      const actual = enhancer.succeed(item);
+      // assert
+      expect(actual).toEqual(expected);
+    });
+  });
 });
